@@ -26,7 +26,7 @@ This will start the API at `http://localhost:8000`.
 
 ### 3. Open the frontend
 
-> ⚠Browsers may block fetch requests if you open the HTML file directly via `file://`. It's best to serve the frontend with a local server.
+> Browsers may block fetch requests if you open the HTML file directly via `file://`. It's best to serve the frontend with a local server.
 
 #### Option A — Open directly (may fail on fetch):
 
