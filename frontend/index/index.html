@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Student ID Keypad</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome to the TLC!</h1>
+    <h2>Enter your student ID</h2>
+    <input type="text" id="studentId" readonly>
+    <div class="keypad">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button id="backspace" class="backspace">←</button>
+      <button>0</button>
+      <button id="enterBtn" class="enter">Enter</button>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('studentId');
+    const buttons = document.querySelectorAll('.keypad button');
+    const enterBtn = document.getElementById('enterBtn');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const value = button.textContent;
+
+        if (button.id === "backspace") {
+          input.value = input.value.slice(0, -1); // remove last character
+        } else if (!isNaN(value) && value !== "") {
+          input.value += value; // only add digits (0-9)
+        }
+      });
+    });
+
+    enterBtn.addEventListener('click', () => {
+      if (input.value !== "" && input.value.length === 7) {
+        localStorage.setItem("studentId", input.value);
+        window.location.href = "../hcctlc/hcctlc.html";
+      } else {
+        alert("Please enter your 7-digit student ID.");
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>
